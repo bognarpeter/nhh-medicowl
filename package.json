@@ -28,6 +28,8 @@
     "lodash": "^4.17.11",
     "lodash.trimend": "^4.5.1",
     "path": "^0.12.7",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "url": "^0.11.0"
   }
 }
