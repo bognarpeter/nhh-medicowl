@@ -9,6 +9,7 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+var rp = require('request-promise');
 const fs = require("fs");
 
 
@@ -18,6 +19,9 @@ const APP = {
     contractId: "fJI8P5Z4cIhP3HawlXVvxWBrbyj5QkTF",
     key: fs.readFileSync("fJI8P5Z4cIhP3HawlXVvxWBrbyj5QkTF.key")
 };
+
+const appId = "a509ae41";
+const appKey = "07c1cc5bdbcbc2514201dd37ac85aae8";
 
 const getBasePath = (req) => url.format({
     protocol: req.protocol,
@@ -138,14 +142,15 @@ function initialize () {
         });
     });
 
-    app.get("/home", (req, res) => {
-       
-        data.then(() => {
-            res.render('home', {results: results});
-        }).catch((err) => {
-            console.log("Error happened while fetching: " + err.toString());
-        });
+
+    app.get("/overview", (req, res) => {
+
+        //TODO
+
+
     });
+
+
 
     app.listen(PORT, (err) => {
         if(err){
