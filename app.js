@@ -102,7 +102,7 @@ function initialize () {
     });
 
     app.get("/home", (req, res) => {
-
+        var results = [];
         const result = req.query.result;
 
         if (result !== "DATA_READY") {
@@ -114,9 +114,15 @@ function initialize () {
             req.query.sessionId, // Our Session ID that we retrieved from the URL
             APP.key, // The private key we setup above
             (fileInfo) => {
+                //debug
+                // console.log("Descriptor:\n", JSON.stringify(fileInfo.fileDescriptor, null, 2));
+                // console.log("Content:\n", JSON.stringify(fileInfo.fileData, null, 2));
+                var descriptor = fileInfo.fileDescriptor;
+                var data = fileInfo.fileData;
 
-                console.log("Descriptor:\n", JSON.stringify(fileInfo.fileDescriptor, null, 2));
-                console.log("Content:\n", JSON.stringify(fileInfo.fileData, null, 2));
+                if(descriptor.serviceGroup === "medical"){
+                    results.push(data);
+                }
             },
             ({fileName, error}) => {
                 console.log("============================================================================");
@@ -126,10 +132,7 @@ function initialize () {
         );
 
         data.then(() => {
-            console.log("============================================================================");
-            console.log("Data fetching complete.");
-            console.log("============================================================================");
-            res.render('home', {requests: "example1"});
+            res.render('home', {results: results});
         }).catch((err) => {
             console.log("Error happened while fetching: " + err.toString());
         });
