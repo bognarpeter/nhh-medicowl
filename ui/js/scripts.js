@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var instances = M.Modal.init(elems, options);
 });
 
-function openAddSymptom() {
-  var elem = document.getElementById('addSymptomModal');
+function openModal(id) {
+  var elem = document.getElementById(id);
   var instance = M.Modal.getInstance(elem);
   instance.open();
 }

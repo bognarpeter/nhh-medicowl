@@ -1,1 +1,8 @@
-Thank you for your data!
+<!-- iterate through every item -->
+{{# if results }}
+    <ul>
+        {{#each results}}
+            <li>{{ this }}</li>
+        {{/each}}
+    </ul>
+{{/if}}
