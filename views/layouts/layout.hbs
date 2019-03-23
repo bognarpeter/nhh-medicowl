@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <title>MedicOwl</title>
+</head>
+<body>
+{{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+{{/if}}
+{{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+{{/if}}
+{{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+{{{body}}}
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</body>
+</html>
