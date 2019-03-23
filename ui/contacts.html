@@ -25,34 +25,94 @@
         <table class="striped">
           <thead>
             <tr>
-              <th data-field="id">Name</th>
-              <th data-field="name">Item Name</th>
-              <th data-field="price">Item Price</th>
+              <th data-field="id">Doctor's name</th>
+              <th data-field="name">Specialised in</th>
+              <th data-field="clinic">Clinic</th>
+              <th data-field="email">Email address</th>
+              <th data-field="mobile">Telephone number</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Alvin</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
+              <td>Anne Klint</td>
+              <td>Cardiologist</td>
+              <td>Heart Clinic</td>
+              <td>laegeklint@examlpe.dk</td>
+              <td>52650102</td>
             </tr>
             <tr>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>$3.76</td>
+              <td>Ali Alvari</td>
+              <td>Urulogist</td>
+              <td>Medical Center</td>
+              <td>laegealvari@examlpe.dk</td>
+              <td>52640304</td>
             </tr>
             <tr>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>$7.00</td>
+              <td>Anders Marple</td>
+              <td>Neurologist</td>
+              <td>Neurology Clinic</td>
+              <td>laegemarple@examlpe.dk</td>
+              <td>52678785</td>
             </tr>
             <tr>
-              <td>Shannon</td>
-              <td>KitKat</td>
-              <td>$9.99</td>
+              <td>Gulan Skovgard</td>
+              <td>Psychiatrist</td>
+              <td>Psychiatry Center</td>
+              <td>laegeskovgard@examlpe.dk</td>
+              <td>52665423</td>
+            </tr>
+            <tr>
+              <td>Nikolaj Andersen</td>
+              <td>Gastroenterologist</td>
+              <td>Gastroenterology Clinic</td>
+              <td>laegeandersen@examlpe.dk</td>
+              <td>52543241</td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+    <div class="fixed-action-btn" >
+      <a class="btn-floating btn-large red" onclick="openAddSymptom()">
+        <i class="large material-icons">add</i>
+      </a>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="addSymptomModal" class="modal">
+      <div class="modal-content">
+        <h4>Add new doctor</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">Doctor's name</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="textarea2" class="materialize-textarea"></textarea>
+                <label for="textarea2">Email address</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="textarea3" class="materialize-textarea"></textarea>
+                <label for="textarea3">Telephone number</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="textarea4" class="materialize-textarea"></textarea>
+                <label for="textarea4">Specialised in</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="textarea5" class="materialize-textarea"></textarea>
+                <label for="textarea5">Name of the clinic</label>
+              </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
       </div>
     </div>
   </main>
