@@ -1,0 +1,19 @@
+{
+  "name": "nhh-medicowl",
+  "version": "1.0.0",
+  "description": "Prototype of team Medicowl for Nordic Health Hackathon Contest",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bognarpeter/nhh-medicowl.git"
+  },
+  "author": "medicowl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bognarpeter/nhh-medicowl/issues"
+  },
+  "homepage": "https://github.com/bognarpeter/nhh-medicowl#readme"
+}
