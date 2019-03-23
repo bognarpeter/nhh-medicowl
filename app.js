@@ -139,7 +139,7 @@ function initialize () {
     });
 
     app.get("/home", (req, res) => {
-       
+
         data.then(() => {
             res.render('home', {results: results});
         }).catch((err) => {
