@@ -15,8 +15,8 @@ const fs = require("fs");
 const PORT = 8080
 const APP = {
     appId: "5ho7sgFxsWJxXG2Nwh5AMNIWOlvMv3VO",
-    contractId: "NwkLC6cRnxeQ0PSRmysngE0eLSS2NiWr",
-    key: fs.readFileSync("NwkLC6cRnxeQ0PSRmysngE0eLSS2NiWr.key")
+    contractId: "fJI8P5Z4cIhP3HawlXVvxWBrbyj5QkTF",
+    key: fs.readFileSync("fJI8P5Z4cIhP3HawlXVvxWBrbyj5QkTF.key")
 };
 
 const getBasePath = (req) => url.format({
@@ -120,8 +120,8 @@ function initialize () {
                 var descriptor = fileInfo.fileDescriptor;
                 var data = fileInfo.fileData;
 
-                if(descriptor.serviceGroup === "medical"){
-                    results.push(data);
+                if(descriptor.serviceGroup === "health fitness"){
+                    results.push(JSON.stringify(data, null, 2));
                 }
             },
             ({fileName, error}) => {
@@ -138,6 +138,14 @@ function initialize () {
         });
     });
 
+    app.get("/home", (req, res) => {
+       
+        data.then(() => {
+            res.render('home', {results: results});
+        }).catch((err) => {
+            console.log("Error happened while fetching: " + err.toString());
+        });
+    });
 
     app.listen(PORT, (err) => {
         if(err){
