@@ -84,7 +84,6 @@ function initialize () {
 
     app.use((err, req, res, next) => {
         res.status(500).send(err);
-
     });
 
 
@@ -142,15 +141,17 @@ function initialize () {
         });
     });
 
-
     app.get("/overview", (req, res) => {
-
-        //TODO
-
-
+          res.render('overview');
     });
 
+    app.get("/history", (req, res) => {
+          res.render('history');
+    });
 
+    app.get("/contacts", (req, res) => {
+          res.render('contacts');
+    });
 
     app.listen(PORT, (err) => {
         if(err){
