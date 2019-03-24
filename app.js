@@ -22,6 +22,9 @@ const APP = {
 const appId = "a509ae41";
 const appKey = "07c1cc5bdbcbc2514201dd37ac85aae8";
 
+//TODO: use NLP api either Google's or theysay.io
+const Sentiments = ["love", "hate", "cool", "excellent", "like", "angry", "neutral", "wonderful", "dislike"];
+
 const getBasePath = (req) => url.format({
   protocol: req.protocol,
   host: req.headers.host,
@@ -207,9 +210,14 @@ function initialize () {
 
               if(descriptor.serviceName === "twitter"){
                   fileData.map((doc) => {
-                      doc.text === undefined ? "" : doc.text.split(' ').map((w) => {if(w.length < 10 && w.length > 3 && w != '@digime'){text.push(w)}});
+                      doc.text === undefined ? "" : doc.text.split(' ')
+                          .map((w) => {if (yourArray.indexOf("someString") > -1){
+                              // {text.push(w)}});
+
+                          }else{
+
+                          }
                   })
-              }
           },
           ({fileName, error}) => {
               console.log("============================================================================");
