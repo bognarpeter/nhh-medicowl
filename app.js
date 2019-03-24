@@ -28,6 +28,23 @@ const getBasePath = (req) => url.format({
   pathname: trimEnd(req.originalUrl, "/"),
 });
 
+var logger = function(status, msg){
+    var dt = new Date();
+    console.log('['+dt+']['+status+'] '+msg);
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 const { establishSession, getWebURL, getDataForSession, getAppURL } = require("@digime/digime-js-sdk");
 
 function initialize () {
@@ -97,7 +114,7 @@ function initialize () {
       const appurl = getAppURL(
         APP.appId,
         session,
-        `${getBasePath(req)}/home?sessionId=${session.sessionKey}`
+        `${getBasePath(req)}/overview?sessionId=${session.sessionKey}`
       );
       console.log(appurl);
 
@@ -143,8 +160,71 @@ function initialize () {
     });
   });
 
+
+  var mode = function(array)
+    {
+        if(array.length == 0)
+            return null;
+        var modeMap = {};
+        var maxEl = array[0], maxCount = 1;
+        for(var i = 0; i < array.length; i++)
+        {
+            var el = array[i];
+            if(modeMap[el] == null)
+                modeMap[el] = 1;
+            else
+                modeMap[el]++;
+            if(modeMap[el] > maxCount)
+            {
+                maxEl = el;
+                maxCount = modeMap[el];
+            }
+        }
+        return maxEl;
+    };
+
+
+
   app.get("/overview", (req, res) => {
-    res.render('overview');
+
+      var text = [];
+      const result = req.query.result;
+
+      if (result !== "DATA_READY") {
+          res.render('error');
+          return;
+      }
+
+      const data = getDataForSession(
+          req.query.sessionId, // Our Session ID that we retrieved from the URL
+          APP.key, // The private key we setup above
+          (fileInfo) => {
+              //debug
+              // console.log("Descriptor:\n", JSON.stringify(fileInfo.fileDescriptor, null, 2));
+              // console.log("Content:\n", JSON.stringify(fileInfo.fileData, null, 2));
+              var descriptor = fileInfo.fileDescriptor;
+              var fileData = fileInfo.fileData;
+
+              if(descriptor.serviceName === "twitter"){
+                  fileData.map((doc) => {
+                      doc.text === undefined ? "" : doc.text.split(' ').map((w) => {if(w.length < 10 && w.length > 3 && w != '@digime'){text.push(w)}});
+                  })
+              }
+          },
+          ({fileName, error}) => {
+              console.log("============================================================================");
+              console.log(`Error retrieving file ${fileName}: ${error.toString()}`);
+              console.log("============================================================================");
+          },
+      );
+
+      data.then(() => {
+          var modetext = mode(text);
+          console.log(modetext);
+          res.render('overview', {modetext: modetext});
+      }).catch((err) => {
+          console.log("Error happened while fetching: " + err.toString());
+      });
   });
 
   app.post("/overview", (req, res) => {
