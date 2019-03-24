@@ -41,7 +41,7 @@ function initialize () {
 
     // BodyParser Middleware
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     // Set Static Folder
     app.use(express.static('public'));
@@ -142,6 +142,13 @@ function initialize () {
     });
 
     app.get("/overview", (req, res) => {
+          console.log("pocsos");
+          res.render('overview');
+    });
+
+    app.post("/overview", (req, res) => {
+          console.log("faszom")
+          console.log(req.body.symptomDescription);
           res.render('overview');
     });
 

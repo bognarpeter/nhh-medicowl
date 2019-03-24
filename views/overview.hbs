@@ -206,25 +206,6 @@
         </a>
       </div>
 
-      <!-- Modal Structure -->
-      <div id="addSymptomModal" class="modal">
-        <div class="modal-content">
-          <h4>Add symptom</h4>
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label for="textarea1">My symptoms are...</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
-        </div>
-      </div>
       <div id="social-data-detailed-modal" class="modal">
         <div class="modal-content">
           <div class="modal-content">
@@ -276,10 +257,10 @@
         <div class="modal-content">
           <h4>Add symptom</h4>
           <div class="row">
-            <form class="col s12">
+            <form class="col s12" method="post" id="symptomForm" action="/overview">
               <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <textarea id="textarea1" class="materialize-textarea" name="symptomDescription"></textarea>
                   <label for="textarea1">My symptoms are...</label>
                 </div>
               </div>
@@ -287,7 +268,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+          <button href="#!" class="modal-close waves-effect waves-green btn-flat" type="submit" form="symptomForm">Ok</button>
         </div>
       </div>
       <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
