@@ -211,11 +211,8 @@ function initialize () {
               if(descriptor.serviceName === "twitter"){
                   fileData.map((doc) => {
                       doc.text === undefined ? "" : doc.text.split(' ')
-                          .map((w) => {if (yourArray.indexOf("someString") > -1){
-                              // {text.push(w)}});
-
-                          }else{
-
+                          .map((w) => {if (Sentiments.indexOf(w) > -1){
+                               text.push(w);
                           }})
                   })}
           },
@@ -228,6 +225,7 @@ function initialize () {
 
       data.then(() => {
           var modetext = mode(text);
+          console.log('modetext:');
           console.log(modetext);
           res.render('overview', {modetext: modetext});
       }).catch((err) => {
