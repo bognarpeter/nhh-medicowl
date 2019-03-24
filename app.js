@@ -141,6 +141,68 @@ function initialize () {
         });
     });
 
+    app.get("/symptoms", (req, res) => {
+        var diseases = [];
+        var symptomsText = "i feel smoach pain but no couoghing today";
+        var optionsInit = {
+            method: 'POST',
+            uri: 'https://api.infermedica.com/v2/parse',
+            headers: {
+                "App-Id": appId,
+                "App-Key": appKey,
+                "Content-Type": 'application/json'
+            },
+            body: {
+                text: symptomsText
+            },
+            json: true
+        };
+
+        rp(optionsInit)
+            .then((parsedBody) => {
+                var symptomsRaw = parsedBody.mentions;
+                var symptoms = symptomsRaw.map((d) => {
+                    return {
+                        id: d.id,
+                        choice_id: d.choice_id,
+                        initial: true
+                    };
+                });
+
+                return rp({
+                    method: 'POST',
+                    uri: 'https://api.infermedica.com/v2/diagnosis',
+                    headers: {
+                        "App-Id": appId,
+                        "App-Key": appKey,
+                        "Content-Type": 'application/json'
+                    },
+                    body: {
+                        sex: "female",
+                        age: 25,
+                        evidence: symptoms,
+                        extras: {}
+                    },
+                    json: true
+                });
+
+            }).then((parsedBody) => {
+            var parsedBodyString = JSON.stringify(parsedBody.conditions, null, 2);
+            console.log(parsedBodyString);
+            parsedBody.conditions.map(function(d){
+                diseases.push(JSON.stringify({name: d.name, probability: d.probability},null, 2));
+            });
+            // console.log(diseases);
+            // console.log(typeof diseases);
+            // console.log(JSON.stringify(diseases));
+            // console.log(diseases.toString());
+            res.render('symptoms', {diseases: diseases});
+        })
+            .catch(function (err) {
+                console.log(err);
+            });
+    });
+
     app.get("/overview", (req, res) => {
           console.log("pocsos");
           res.render('overview');
