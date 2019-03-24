@@ -32,7 +32,7 @@ const { establishSession, getWebURL, getDataForSession, getAppURL } = require("@
 
 function initialize () {
   let app = express();
-  var allSymptoms = ["Fever"];
+  var allSymptoms = [];
   var diseases = [];
 
 
@@ -201,13 +201,18 @@ function initialize () {
       parsedBody.conditions.map(function(d){
         diseases.push(JSON.stringify({name: d.name, probability: d.probability},null, 2));
       });
+      if(diseases.length == 0){
+        res.render('overview', {diseases: diseases, symptoms: allSymptoms});
+      } else {
+        var illness = JSON.parse(diseases[0]).name;
+        console.log(illness);
+        res.render('overview', {diseases: diseases, symptoms: allSymptoms, illness: illness});
+      }
       // console.log(diseases);
       // console.log(typeof diseases);
       // console.log(JSON.stringify(diseases));
       // console.log(diseases.toString());
-      console.log("kaka:" + diseases);
-      console.log("hugy:" + allSymptoms);
-      res.render('overview', {diseases: diseases, symptoms: allSymptoms});
+
     })
     .catch(function (err) {
       console.log(err);

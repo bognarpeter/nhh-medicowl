@@ -10,7 +10,7 @@
                   <i class="material-icons background-round mt-5">people</i>
                 </div>
                 <div class="col s10 right-align">
-                  <h5 class="mb-0">Healthy</h5>
+                          <h5 class="mb-0">Healthy</h5>
                   <p class="no-margin">Based on social media activity</p>
                 </div>
               </div>
@@ -42,7 +42,11 @@
                   <i class="material-icons background-round mt-5">person</i>
                 </div>
                 <div class="col s10 right-align">
-                  <h5 class="mb-0">Healthy</h5>
+                  {{#if illness}}
+                      <h5 class="mb-0">Ill ({{ illness }})</h5>
+                  {{else}}
+                      <h5 class="mb-0">Healthy</h5>
+                  {{/if}}
                   <p class="no-margin">Based on personal report</p>
                 </div>
               </div>
@@ -117,9 +121,6 @@
               <li class="collection-item avatar">
                 <i class="material-icons circle">folder</i>
                 <span class="title">{{ this }}</span>
-                <p>First Line <br>
-                  Second Line
-                </p>
               </li>
             {{/each}}
           </ul>
@@ -130,34 +131,34 @@
               <h4 class="task-card-title">Doctors</h4>
             </li>
             <li class="collection-item avatar">
-              <img src="images/yuna.jpg" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
+              <img src="images/doctor1.jpg" alt="" class="circle">
+              <span class="title">Florence Nightingale</span>
+              <p>Cardiologist <br>
+                Heart Clinic
               </p>
               <a class="waves-effect waves-light btn secondary-content">book</a>
             </li>
             <li class="collection-item avatar">
-              <i class="material-icons circle">folder</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
+              <img src="images/doctor2.jpg" alt="" class="circle">
+              <span class="title">Nikolay Pirogov</span>
+              <p>Neurologist<br>
+                Neurology Clinic
               </p>
               <a class="waves-effect waves-light btn secondary-content">book</a>
             </li>
             <li class="collection-item avatar">
-              <i class="material-icons circle green">insert_chart</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
+              <img src="images/doctor3.jpg" alt="" class="circle">
+              <span class="title">Mary Eliza Mahoney</span>
+              <p>Psychiatrist<br>
+                Medical Center
               </p>
               <a class="waves-effect waves-light btn secondary-content">book</a>
             </li>
             <li class="collection-item avatar">
-              <i class="material-icons circle red">play_arrow</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
+              <img src="images/doctor4.jpg" alt="" class="circle">
+              <span class="title">Norman Shumway</span>
+              <p>Gastroenterologist<br>
+                Gastroenterology Clinic
               </p>
               <a class="waves-effect waves-light btn secondary-content">book</a>
             </li>
@@ -168,7 +169,7 @@
           <ul id="task-card" class="collection with-header">
             <li class="collection-header teal accent-4">
               <h4 class="task-card-title">Hearth rate</h4>
-              <p class="task-card-date">Sept 16 - Sept 16</p>
+              <p class="task-card-date">march 14 - march 24</p>
             </li>
             <div id="tester" style="width: 100%, height:300px;">
             </div>
@@ -252,8 +253,8 @@
       <script>
       TESTER = document.getElementById('tester');
       Plotly.plot( TESTER, [{
-        x: [1, 2, 3, 4, 5],
-        y: [1, 2, 4, 8, 16] }], {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        y: [69, 73, 75, 68, 75, 68, 65, 69, 71, 79] }], {
           margin: { t: 30, r: 30, l: 30, b:30}, yaxis: {fixedrange: true}, xaxis: {fixedrange: true}}, {displayModeBar: false} );
           </script>
         </main>
