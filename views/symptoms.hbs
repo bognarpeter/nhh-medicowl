@@ -1,0 +1,8 @@
+<!-- iterate through every item -->
+{{# if diseases }}
+    <ul>
+        {{# each diseases as |disease key|}}
+            <li>{{ disease }}</li>
+        {{/each}}
+    </ul>
+{{/if}}
