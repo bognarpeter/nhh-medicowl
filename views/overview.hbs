@@ -78,38 +78,29 @@
             <li class="collection-header teal accent-4">
               <h4 class="task-card-title">What to do</h4>
             </li>
+            {{#if illness}}
+              <li class="collection-item avatar">
+                <img src="" alt="" class="circle">
+                <span class="title">Hydratation</span>
+                <p>Drink more water!</p>
+              </li>
+              <li class="collection-item avatar">
+                <img src="" alt="" class="circle">
+                <span class="title">Specialist</span>
+                <p>Visit your doctor!</p>
+              </li>
+              <li class="collection-item avatar">
+                <img src="" alt="" class="circle">
+                <span class="titleTake rest"</span>
+                <p>You need to sleep a lot to get recovered.</p>
+              </li>
+            {{else}}
             <li class="collection-item avatar">
               <img src="images/yuna.jpg" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
+              <span class="title">Fruits</span>
+              <p>Eat an apple every day!</p>
             </li>
-            <li class="collection-item avatar">
-              <i class="material-icons circle">folder</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
-            </li>
-            <li class="collection-item avatar">
-              <i class="material-icons circle green">insert_chart</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
-            </li>
-            <li class="collection-item avatar">
-              <i class="material-icons circle red">play_arrow</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
-            </li>
+            {{/if}}
           </ul>
         </div>
         <div class="col s12 m4">
@@ -168,7 +159,7 @@
         <div class="col s12 m12 l12">
           <ul id="task-card" class="collection with-header">
             <li class="collection-header teal accent-4">
-              <h4 class="task-card-title">Hearth rate</h4>
+              <h4 class="task-card-title">Heart rate</h4>
               <p class="task-card-date">march 14 - march 24</p>
             </li>
             <div id="tester" style="width: 100%, height:300px;">
