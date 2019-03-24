@@ -5,4 +5,9 @@
             <li>{{ disease }}</li>
         {{/each}}
     </ul>
+    <ul>
+        {{# each symptoms}}
+            <li>{{ this.name }}</li>
+        {{/each}}
+    </ul>
 {{/if}}

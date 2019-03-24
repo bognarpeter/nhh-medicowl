@@ -10,8 +10,8 @@
                   <i class="material-icons background-round mt-5">people</i>
                 </div>
                 <div class="col s10 right-align">
-                  <h5 class="mb-0">Healthier</h5>
-                  <p class="no-margin">Social media activity</p>
+                  <h5 class="mb-0">Healthy</h5>
+                  <p class="no-margin">Based on social media activity</p>
                 </div>
               </div>
             </div>
@@ -26,8 +26,8 @@
                   <i class="material-icons background-round mt-5">show_chart</i>
                 </div>
                 <div class="col s10 right-align">
-                  <h5 class="mb-0">Healthier</h5>
-                  <p class="no-margin">Wearables data</p>
+                  <h5 class="mb-0">Healthy</h5>
+                  <p class="no-margin">Based on wearables data</p>
                 </div>
               </div>
             </div>
@@ -42,8 +42,8 @@
                   <i class="material-icons background-round mt-5">person</i>
                 </div>
                 <div class="col s10 right-align">
-                  <h5 class="mb-0">Healthier</h5>
-                  <p class="no-margin">Personal syptomes</p>
+                  <h5 class="mb-0">Healthy</h5>
+                  <p class="no-margin">Based on personal report</p>
                 </div>
               </div>
             </div>
@@ -58,8 +58,8 @@
                   <i class="material-icons background-round mt-5">local_hospital</i>
                 </div>
                 <div class="col s10 right-align">
-                  <h5 class="mb-0">Healthier</h5>
-                  <p class="no-margin">Hospital feedback</p>
+                  <h5 class="mb-0">Healthy</h5>
+                  <p class="no-margin">Based on medical records</p>
                 </div>
               </div>
             </div>
@@ -113,38 +113,15 @@
             <li class="collection-header teal accent-4">
               <h4 class="task-card-title">Symptoms</h4>
             </li>
-            <li class="collection-item avatar">
-              <img src="images/yuna.jpg" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
-            </li>
-            <li class="collection-item avatar">
-              <i class="material-icons circle">folder</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
-            </li>
-            <li class="collection-item avatar">
-              <i class="material-icons circle green">insert_chart</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
-            </li>
-            <li class="collection-item avatar">
-              <i class="material-icons circle red">play_arrow</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                Second Line
-              </p>
-
-            </li>
+            {{#each symptoms}}
+              <li class="collection-item avatar">
+                <i class="material-icons circle">folder</i>
+                <span class="title">{{ this }}</span>
+                <p>First Line <br>
+                  Second Line
+                </p>
+              </li>
+            {{/each}}
           </ul>
         </div>
         <div class="col s12 m4">
